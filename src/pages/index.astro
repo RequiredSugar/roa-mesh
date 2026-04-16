@@ -1,190 +1,49 @@
 ---
-// Layout and Component Imports
-import Layout from '../layouts/Layout.astro';
-
-const communityName = "Roanoke MeshCore";
-const discordLink = "https://mkroa.org/discord"; // Local MAKE Roanoke hub
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
-
-<Layout title="Roanoke MeshCore | Off-Grid Messaging in the Star City">
-	<main class="container">
-		<header class="hero">
-			<div class="hero-content">
-				<span class="badge">Roanoke, Virginia</span>
-				<h1>The Mesh of the <span>Star City</span></h1>
-				<p class="lead">
-					Building a resilient, decentralized, and off-grid communication network for the Roanoke Valley. 
-					No cell towers. No internet. Just the community.
-				</p>
-				<div class="cta-group">
-					<a href="#get-started" class="btn primary">Join the Mesh</a>
-					<a href={discordLink} class="btn secondary" target="_blank">Chat on Discord</a>
-				</div>
-			</div>
-		</header>
-
-		<hr class="divider" />
-
-		<section id="features" class="features">
-			<h2>Why MeshCore for Roanoke?</h2>
-			<div class="grid">
-				<div class="card">
-					<div class="icon">⛰️</div>
-					<h3>Mountain Proof</h3>
-					<p>With MeshCore’s focus on high-elevation repeaters, we’re bridging the gaps across the Blue Ridge and Mill Mountain.</p>
-				</div>
-				<div class="card">
-					<div class="icon">🔒</div>
-					<h3>Private & Secure</h3>
-					<p>Every message is AES-256 end-to-end encrypted. Your data never touches a server or a third-party provider.</p>
-				</div>
-				<div class="card">
-					<div class="icon">⛺</div>
-					<h3>Off-Grid Ready</h3>
-					<p>Perfect for hikers on the AT, emergency prep in the valley, or staying connected when the grid goes dark.</p>
-				</div>
-			</div>
-		</section>
-
-		<section id="get-started" class="get-started">
-			<div class="content-box">
-				<h2>How to Join the Roanoke Mesh</h2>
-				<ol class="steps">
-					<li>
-						<strong>Get a Device:</strong> 
-						We recommend the <strong>Heltec V3</strong> or <strong>Lilygo T-Beam</strong> (915MHz for USA).
-					</li>
-					<li>
-						<strong>Flash the Firmware:</strong> 
-						Use the <a href="https://meshcore.co.uk/" target="_blank">MeshCore Web Flasher</a> to install the latest firmware in your browser.
-					</li>
-					<li>
-						<strong>Set Your Call:</strong> 
-						Configure your "Advert" name and join our local public channel.
-					</li>
-					<li>
-						<strong>Connect with MAKE Roanoke:</strong> 
-						Join the <code>#hobby-incubator</code> channel on the MAKE Roanoke Discord to coordinate repeater locations.
-					</li>
-				</ol>
-			</div>
-		</section>
-
-		<section class="map-preview">
-			<div class="map-card">
-				<h3>Current Node Coverage</h3>
-				<p>Our network is growing! Nodes are currently active in <strong>Grandin Village</strong>, <strong>Downtown</strong>, and <strong>Cave Spring</strong>.</p>
-				<div class="placeholder-map">
-					<span>[Interactive Roanoke Mesh Map Coming Soon]</span>
-				</div>
-			</div>
-		</section>
-	</main>
-</Layout>
-
-<style>
-	:root {
-		--primary: #3b82f6;
-		--primary-hover: #2563eb;
-		--bg: #0f172a;
-		--text: #f8fafc;
-		--card-bg: #1e293b;
-	}
-
-	.container {
-		max-width: 1000px;
-		margin: 0 auto;
-		padding: 2rem;
-		font-family: system-ui, sans-serif;
-		color: var(--text);
-		background-color: var(--bg);
-	}
-
-	.hero {
-		padding: 4rem 0;
-		text-align: center;
-	}
-
-	h1 {
-		font-size: 3.5rem;
-		margin: 1rem 0;
-	}
-
-	h1 span {
-		color: var(--primary);
-	}
-
-	.badge {
-		background: rgba(59, 130, 246, 0.2);
-		color: var(--primary);
-		padding: 0.5rem 1rem;
-		border-radius: 99px;
-		font-weight: bold;
-		text-transform: uppercase;
-		font-size: 0.8rem;
-	}
-
-	.lead {
-		font-size: 1.25rem;
-		color: #94a3b8;
-		max-width: 600px;
-		margin: 0 auto 2rem;
-	}
-
-	.cta-group {
-		display: flex;
-		gap: 1rem;
-		justify-content: center;
-	}
-
-	.btn {
-		padding: 0.8rem 1.5rem;
-		border-radius: 8px;
-		text-decoration: none;
-		font-weight: 600;
-		transition: 0.2s;
-	}
-
-	.btn.primary { background: var(--primary); color: white; }
-	.btn.primary:hover { background: var(--primary-hover); }
-	.btn.secondary { background: #334155; color: white; }
-
-	.grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-		gap: 2rem;
-		margin-top: 3rem;
-	}
-
-	.card {
-		background: var(--card-bg);
-		padding: 2rem;
-		border-radius: 12px;
-		border: 1px solid #334155;
-	}
-
-	.icon { font-size: 2rem; margin-bottom: 1rem; }
-
-	.steps {
-		line-height: 2;
-		font-size: 1.1rem;
-	}
-
-	.placeholder-map {
-		height: 300px;
-		background: #020617;
-		border-radius: 12px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		color: #475569;
-		border: 2px dashed #334155;
-		margin-top: 1rem;
-	}
-
-	.divider {
-		border: 0;
-		border-top: 1px solid #334155;
-		margin: 4rem 0;
-	}
-</style>
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>🧑‍🚀 Hello, Astronaut!</h1>
+			<p>
+				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
+				template serves as a lightweight, minimally-styled starting point for anyone looking to build
+				a personal website, blog, or portfolio with Astro.
+			</p>
+			<p>
+				This template comes with a few integrations already configured in your
+				<code>astro.config.mjs</code> file. You can customize your setup with
+				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
+				React, or Vue to your project.
+			</p>
+			<p>Here are a few ideas on how to get started with the template:</p>
+			<ul>
+				<li>Edit this page in <code>src/pages/index.astro</code></li>
+				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
+				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
+				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
+				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
+			</ul>
+			<p>
+				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
+					>read the docs
+				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
+			</p>
+			<p>
+				Looking for a blog template with a bit more personality? Check out <a
+					href="https://github.com/Charca/astro-blog-template"
+					>astro-blog-template
+				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
+			</p>
+		</main>
+		<Footer />
+	</body>
+</html>
